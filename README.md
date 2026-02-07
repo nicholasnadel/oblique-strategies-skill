@@ -1,6 +1,6 @@
 # Oblique Strategies
 
-A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skill that brings Brian Eno and Peter Schmidt's [Oblique Strategies](https://en.wikipedia.org/wiki/Oblique_Strategies) into your coding sessions.
+A system prompt for any LLM that brings Brian Eno and Peter Schmidt's [Oblique Strategies](https://en.wikipedia.org/wiki/Oblique_Strategies) into your creative and coding sessions.
 
 > *Over One Hundred Worthwhile Dilemmas*
 
@@ -8,7 +8,7 @@ A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skill that bring
 
 Draws a single card from the Oblique Strategies deck when you're stuck. One card. No re-draws. Sit with it.
 
-The skill detects when you're going in circles and offers a card — or you can invoke it directly with `/oblique`. It presents the card in its original voice, then offers a brief interpretation in the context of whatever you're working on.
+The LLM detects when you're going in circles and offers a card — or you can ask for one directly. It presents the card in its original voice, then offers a brief interpretation in the context of whatever you're working on.
 
 ## What it won't do
 
@@ -18,15 +18,54 @@ The skill detects when you're going in circles and offers a card — or you can 
 
 ## Install
 
+The core of this repo is `SKILL.md` — a plain markdown file containing the full deck and behavioral instructions. Any LLM that can read a system prompt can use it. Pick the method that fits your tool:
+
+### Claude Code
+
 ```bash
 claude skill add --from nicholasnadel/oblique-strategies-skill
 ```
 
-Or clone directly into your skills directory:
+Or clone directly:
 
 ```bash
-git clone git@github.com:nicholasnadel/oblique-strategies-skill.git ~/.claude/skills/oblique-strategies
+git clone https://github.com/nicholasnadel/oblique-strategies-skill.git ~/.claude/skills/oblique-strategies
 ```
+
+### Cursor
+
+Copy `SKILL.md` into your project's rules directory:
+
+```bash
+cp SKILL.md .cursor/rules/oblique-strategies.md
+```
+
+Or add it as a global rule at `~/.cursor/rules/oblique-strategies.md`.
+
+### Windsurf
+
+Copy `SKILL.md` into your Windsurf rules:
+
+```bash
+cp SKILL.md .windsurf/rules/oblique-strategies.md
+```
+
+### GitHub Copilot
+
+Copy `SKILL.md` into your Copilot instructions:
+
+```bash
+cp SKILL.md .github/copilot-instructions/oblique-strategies.md
+```
+
+### ChatGPT / Custom GPTs
+
+1. Open **Settings > Personalization > Custom Instructions** (or create a Custom GPT)
+2. Paste the contents of `SKILL.md` into the system instructions
+
+### Any other LLM
+
+Paste the contents of `SKILL.md` into whatever system prompt, custom instructions, or rules file your tool supports. It's just markdown — no proprietary format, no dependencies.
 
 ## Example
 
